@@ -13,20 +13,6 @@ class WeixinPush(object):
         self.corpid = corpid
         self.corpsecret = corpsecret
 
-    def get_token(self):
-        res = urllib2.Request(self._get_url('get_token',
-                                            corpid=self.corpid,
-                                            corpsecret=self.corpsecret))
-
-        with contextlib.closing(urllib2.urlopen(res)) as r:
-            resp = json.loads(r.read())
-
-            if resp.get('access_token', None):
-                return resp['access_token']
-            else:
-                print resp
-                return
-
     def _target_format(self, target):
         if isinstance(target, list):
             return '|'.join(target)
