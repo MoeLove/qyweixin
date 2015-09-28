@@ -1,10 +1,14 @@
 # -*- coding:utf-8 -*-
 
 import contextlib
-import json
 import urllib2
 
 from config import AGENTID, CORPID, CORPSECRET
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
 
 
 class WeixinPush(object):
@@ -19,8 +23,8 @@ class WeixinPush(object):
         else:
             return target
 
-    def push_text_message(self, agentid=AGENTID, content='', touser='@all',
-                          toparty='', totag='', **kwargs):
+    def push_text_message(self, token=None, agentid=AGENTID, content='',
+                          touser='@all', toparty='', totag='', **kwargs):
         message_body = {
             'touser': self._target_format(touser),
             'toparty': self._target_format(toparty),
@@ -33,10 +37,11 @@ class WeixinPush(object):
             'safe': kwargs.get('safe', 0)
         }
 
-        token = self.get_token()
-
         if token:
-            res = urllib2.Request(self._get_url('push_message', token=token))
+            res = urllib2.Request(
+                'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' +
+                token
+            )
 
             with contextlib.closing(
                 urllib2.urlopen(res, json.dumps(message_body,
@@ -48,14 +53,8 @@ class WeixinPush(object):
                 else:
                     print r.code, r.read()
                     return False
-
-    def _get_url(self, api_name, **kwargs):
-        api_collections = {
-            'get_token': 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=' + kwargs.get('corpid', '') + '&corpsecret=' + kwargs.get('corpsecret', ''),
-            'push_message': 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' + kwargs.get('token', '')
-        }
-
-        return api_collections[api_name]
+        else:
+            return False
 
 
 def push_message(**kwargs):

@@ -1,8 +1,12 @@
 # -*- coding:utf-8 -*-
 
 import contextlib
-import json
 import urllib2
+
+try:
+    import json
+except ImportError:
+    import simplejson as json
 
 
 class AccessToken(object):
@@ -12,7 +16,8 @@ class AccessToken(object):
         self.corpsecret = corpsecret
 
     def get_token(self):
-        get_token_api = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=' + self.corpid + '&corpsecret=' + self.corpsecret
+        get_token_api = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=' + \
+            self.corpid + '&corpsecret=' + self.corpsecret
         res = urllib2.Request(get_token_api)
 
         with contextlib.closing(urllib2.urlopen(res)) as r:
