@@ -12,12 +12,12 @@ except ImportError:
 class AccessToken(object):
 
     def __init__(self, corpid, corpsecret):
-        self.corpid = corpid
-        self.corpsecret = corpsecret
+        self._corpid = corpid
+        self._corpsecret = corpsecret
 
     def get_token(self):
-        get_token_api = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=' + \
-            self.corpid + '&corpsecret=' + self.corpsecret
+        get_token_api = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=%s&corpsecret=%s' % (
+            self._corpid, self._corpsecret)
         res = urllib2.Request(get_token_api)
 
         with contextlib.closing(urllib2.urlopen(res)) as r:
@@ -26,5 +26,4 @@ class AccessToken(object):
             if resp.get('access_token', None):
                 return resp['access_token']
             else:
-                print resp
-                return
+                return resp
