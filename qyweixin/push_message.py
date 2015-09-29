@@ -3,7 +3,7 @@
 import contextlib
 import urllib2
 
-from config import AGENTID, CORPID, CORPSECRET
+from config import CORPID, CORPSECRET
 
 try:
     import json
@@ -13,35 +13,28 @@ except ImportError:
 
 class WeixinPush(object):
 
-    def __init__(self, corpid, corpsecret):
-        self.corpid = corpid
-        self.corpsecret = corpsecret
-
     def _target_format(self, target):
         if isinstance(target, list):
             return '|'.join(target)
         else:
             return target
 
-    def push_text_message(self, token=None, agentid=AGENTID, content='',
-                          touser='@all', toparty='', totag='', **kwargs):
+    def _push_message(self, token=None, agentid=0, msgtype='text',
+                      content='', touser='@all', toparty='',
+                      totag='', safe=0):
         message_body = {
             'touser': self._target_format(touser),
             'toparty': self._target_format(toparty),
             'totag': self._target_format(totag),
-            'msgtype': 'text',
-            'text': {
-                'content': content
-            },
             'agentid': agentid,
-            'safe': kwargs.get('safe', 0)
+            'msgtype': msgtype,
+            'content': content,
+            'safe': safe
         }
 
         if token:
-            res = urllib2.Request(
-                'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' +
-                token
-            )
+            push_message_api = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' + token
+            res = urllib2.Request(push_message_api)
 
             with contextlib.closing(
                 urllib2.urlopen(res, json.dumps(message_body,
@@ -55,6 +48,53 @@ class WeixinPush(object):
                     return False
         else:
             return False
+
+    def push_text_message(self, token=None, agentid=0, content='',
+                          touser='@all', toparty='', totag='', safe=0):
+
+        return self._push_message(token=token, agentid=agentid, msgtype='text',
+                                  content=content, touser=touser,
+                                  toparty=toparty, totag=totag, safe=safe)
+
+    def push_image_message(self, token=None, agentid=0, content='',
+                           touser='@all', toparty='', totag='', safe=0):
+
+        return self._push_message(token=token, agentid=agentid,
+                                  msgtype='image', content=content,
+                                  touser=touser, toparty=toparty, totag=totag,
+                                  safe=safe)
+
+    def push_voice_message(self, token=None, agentid=0, content='',
+                           touser='@all', toparty='', totag='', safe=0):
+
+        return self._push_message(token=token, agentid=agentid,
+                                  msgtype='voice', content=content,
+                                  touser=touser, toparty=toparty, totag=totag,
+                                  safe=safe)
+
+    def push_video_message(self, token=None, agentid=0, media_id='', title='',
+                           description='', touser='@all', toparty='',
+                           totag='', safe=0):
+        if media_id:
+            content = {}
+            content['media_id'] = media_id
+            content['title'] = title
+            content['description'] = description
+
+            return self._push_message(token=token, agentid=agentid,
+                                      msgtype='video', content=content,
+                                      touser=touser, toparty=toparty, totag=totag,
+                                      safe=safe)
+        else:
+            return False
+
+    def push_file_message(self, token=None, agentid=0, content='',
+                          touser='@all', toparty='', totag='', safe=0):
+
+        return self._push_message(token=token, agentid=agentid,
+                                  msgtype='file', content=content,
+                                  touser=touser, toparty=toparty, totag=totag,
+                                  safe=safe)
 
 
 def push_message(**kwargs):
