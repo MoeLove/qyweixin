@@ -3,8 +3,6 @@
 import contextlib
 import urllib2
 
-from config import CORPID, CORPSECRET
-
 try:
     import json
 except ImportError:
@@ -32,8 +30,6 @@ class WeixinPush(object):
             'safe': safe
         }
 
-        print message_body
-
         if token:
             push_message_api = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=%s' % token
             res = urllib2.Request(push_message_api)
@@ -42,11 +38,11 @@ class WeixinPush(object):
                 urllib2.urlopen(res, json.dumps(message_body,
                                                 ensure_ascii=False))) as r:
 
-                if r.code == 200:
-                    print r.read()
+                resp = json.loads(r.read())
+
+                if resp.get('errmsg', None) == 'ok':
                     return True
                 else:
-                    print r.code, r.read()
                     return False
         else:
             return False
@@ -106,11 +102,3 @@ class WeixinPush(object):
                                   msgtype='file', content=_file_content,
                                   touser=touser, toparty=toparty, totag=totag,
                                   safe=safe)
-
-
-def push_message(**kwargs):
-    wxp = WeixinPush(CORPID, CORPSECRET)
-    wxp.push_text_message(**kwargs)
-
-if __name__ == '__main__':
-    push_message(agentid=4, content='qyweixin api')

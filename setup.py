@@ -3,7 +3,6 @@
 import os
 import re
 import sys
-
 from codecs import open
 
 try:
@@ -31,6 +30,7 @@ if not version:
 
 with open('README.rst', 'r', 'utf-8') as f:
     readme = f.read()
+
 with open('HISTORY.rst', 'r', 'utf-8') as f:
     history = f.read()
 
@@ -55,10 +55,6 @@ setup(
         'Natural Language :: English',
         'License :: OSI Approved :: GNU GENERAL PUBLIC License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
     ),
-    extras_require={
-        'security': ['pyOpenSSL', 'ndg-httpsclient', 'pyasn1'],
-    },
 )

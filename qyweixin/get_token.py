@@ -20,10 +20,13 @@ class AccessToken(object):
             self._corpid, self._corpsecret)
         res = urllib2.Request(get_token_api)
 
-        with contextlib.closing(urllib2.urlopen(res)) as r:
-            resp = json.loads(r.read())
+        try:
+            with contextlib.closing(urllib2.urlopen(res)) as r:
+                resp = json.loads(r.read())
 
-            if resp.get('access_token', None):
-                return resp['access_token']
-            else:
-                return resp
+                if resp.get('access_token', None):
+                    return resp['access_token']
+                else:
+                    return False
+        except:
+            return False
