@@ -29,6 +29,15 @@ Usage
     True
 
 
+- upload files
+
+.. code-block:: python
+
+    >>> upload = qyweixin.Upload()
+    >>> media_id = upload.upload(token, filename, filepath, filetype)
+    ...
+
+
 Features
 --------
 

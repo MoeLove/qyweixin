@@ -12,7 +12,7 @@ Homepage:
 
 __title__ = 'qyweixin'
 __author__ = 'TaoBeier'
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 TaoBeier'
 
@@ -21,5 +21,6 @@ import logging
 from logging import NullHandler
 from .get_token import AccessToken
 from .push_message import WeixinPush
+from .upload import Upload
 
 logging.getLogger(__name__).addHandler(NullHandler())
