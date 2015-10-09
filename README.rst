@@ -57,6 +57,12 @@ To install qyweixin, simply:
     $ pip install qyweixin
 
 
+License
+=========
+
+Copyright (C) 2015 TaoBeier
+
+
 HISTORY
 =======
 
