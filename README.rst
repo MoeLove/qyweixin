@@ -39,7 +39,7 @@ Usage
 
 
 Features
---------
+---------
 
 - uploads media
 - manage media
@@ -48,10 +48,17 @@ Features
 
 
 Installation
---------
+-------------
 
 To install qyweixin, simply:
 
 .. code-block:: bash
 
     $ pip install qyweixin
+
+
+HISTORY
+=======
+
+* 2015.09.27 Start.
+* 2015.10.08 Add file upload.
