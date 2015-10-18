@@ -25,7 +25,7 @@ Usage
 .. code-block:: python
 
     >>> push_msg = qyweixin.WeixinPush()
-    >>> push_msg.push_text_msg(token=token, content='test msg')
+    >>> push_msg.push_text_msg(token=token, agentid=0, content='test msg', touser='test', toparty='test_group', totag='', safe=0)
     True
 
 
@@ -41,6 +41,7 @@ Usage
 Features
 ---------
 
+- push messages
 - uploads media
 - manage media
 - receive message
@@ -64,7 +65,7 @@ Copyright (C) 2015 TaoBeier
 
 
 HISTORY
-=======
+=========
 
 * 2015.09.27 Start.
 * 2015.10.08 Add file upload.
