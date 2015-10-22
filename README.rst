@@ -4,6 +4,9 @@ qyweixin
 .. image:: https://img.shields.io/pypi/v/qyweixin.svg
     :target: https://pypi.python.org/pypi/qyweixin
 
+.. image:: https://img.shields.io/pypi/dm/qyweixin.svg
+    :target: https://pypi.python.org/pypi/qyweixin
+
 `enterprise weixin <https://qy.weixin.qq.com>`_, interface.
 
 Usage
