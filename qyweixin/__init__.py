@@ -19,7 +19,7 @@ __copyright__ = 'Copyright 2015 TaoBeier'
 
 import logging
 from logging import NullHandler
-from .get_token import AccessToken
+from .get_token import get_token
 from .push_message import WeixinPush
 from .upload import Upload
 

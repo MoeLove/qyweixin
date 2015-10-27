@@ -17,8 +17,7 @@ Usage
 .. code-block:: python
 
     >>> import qyweixin
-    >>> qy = qyweixin.AccessToken(corpid, corpsecret)
-    >>> token = qy.get_token()
+    >>> token = qyweixin.get_token('corpid', 'corpsecret')
     >>> token
     ...
 
