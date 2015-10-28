@@ -65,3 +65,8 @@ class Upload(object):
         with contextlib.closing(urllib2.urlopen(req, data=body)) as r:
             resp = json.loads(r.read())
             return resp.get('media_id', False)
+
+
+def upload(token, filename, filepath, filetype):
+    qyupload = Upload()
+    return qyupload.upload(token, filename, filepath, filetype)

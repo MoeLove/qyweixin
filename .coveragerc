@@ -1,0 +1,7 @@
+[run]
+branch = true
+source = qyweixin
+omit =
+    test_qyweixin*
+
+[report]

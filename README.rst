@@ -26,6 +26,7 @@ Usage
 
 .. code-block:: python
 
+    >>> import qyweixin
     >>> push_msg = qyweixin.WeixinPush()
     >>> push_msg.push_text_msg(token=token, agentid=0, content='test msg', touser='test', toparty='test_group', totag='', safe=0)
     True
@@ -35,8 +36,8 @@ Usage
 
 .. code-block:: python
 
-    >>> upload = qyweixin.Upload()
-    >>> media_id = upload.upload(token, filename, filepath, filetype)
+    >>> import qyweixin
+    >>> media_id = qyweixin.upload(token, filename, filepath, filetype)
     ...
 
 

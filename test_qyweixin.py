@@ -21,6 +21,12 @@ class QyweixinTestCase(unittest.TestCase):
 
         assert token is False
 
+    def test_push_text_msg(self):
+        push_msg = qyweixin.WeixinPush()
+        result = push_msg.push_text_msg('text_token')
+
+        assert result is False
+
 
 if __name__ == '__main__':
     unittest.main()

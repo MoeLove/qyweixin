@@ -47,7 +47,7 @@ class WeixinPush(object):
         else:
             return False
 
-    def push_text_msg(self, token=None, agentid=0, content='',
+    def push_text_msg(self, token, agentid=0, content='',
                       touser='@all', toparty='', totag='', safe=0):
         _text_content = {
             'content': content
@@ -57,7 +57,7 @@ class WeixinPush(object):
                                   content=_text_content, touser=touser,
                                   toparty=toparty, totag=totag, safe=safe)
 
-    def push_image_msg(self, token=None, agentid=0, media_id='',
+    def push_image_msg(self, token, agentid=0, media_id='',
                        touser='@all', toparty='', totag='', safe=0):
         _image_content = {
             'media_id': media_id
@@ -68,7 +68,7 @@ class WeixinPush(object):
                                   touser=touser, toparty=toparty, totag=totag,
                                   safe=safe)
 
-    def push_voice_msg(self, token=None, agentid=0, media_id='',
+    def push_voice_msg(self, token, agentid=0, media_id='',
                        touser='@all', toparty='', totag='', safe=0):
         _voice_content = {
             'media_id': media_id
@@ -79,7 +79,7 @@ class WeixinPush(object):
                                   touser=touser, toparty=toparty, totag=totag,
                                   safe=safe)
 
-    def push_video_msg(self, token=None, agentid=0, media_id='', title='',
+    def push_video_msg(self, token, agentid=0, media_id='', title='',
                        description='', touser='@all', toparty='',
                        totag='', safe=0):
         _video_content = {}
@@ -92,7 +92,7 @@ class WeixinPush(object):
                                   touser=touser, toparty=toparty,
                                   totag=totag, safe=safe)
 
-    def push_file_msg(self, token=None, agentid=0, media_id='',
+    def push_file_msg(self, token, agentid=0, media_id='',
                       touser='@all', toparty='', totag='', safe=0):
         _file_content = {
             'media_id': media_id

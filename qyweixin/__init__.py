@@ -21,6 +21,6 @@ import logging
 from logging import NullHandler
 from .get_token import get_token
 from .push_message import WeixinPush
-from .upload import Upload
+from .upload import upload
 
 logging.getLogger(__name__).addHandler(NullHandler())

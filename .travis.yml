@@ -1,0 +1,21 @@
+language: python
+python:
+    - 2.7
+
+env:
+    - DEPS=true
+    - DEPS=false
+
+sudo: false
+
+install:
+    - travis_retry python setup.py install
+    - travis_retry pip install coveralls
+    - coverage run test_qyweixin.py
+    - coverage report
+
+script:
+    - python test_qyweixin.py
+
+after_success:
+    coveralls
