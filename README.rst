@@ -4,10 +4,22 @@ qyweixin
 .. image:: https://img.shields.io/pypi/v/qyweixin.svg
     :target: https://pypi.python.org/pypi/qyweixin
 
+.. image:: https://travis-ci.org/tao12345666333/qyweixin.svg?branch=master
+    :target: https://travis-ci.org/tao12345666333/qyweixin
+
+.. image:: https://coveralls.io/repos/tao12345666333/qyweixin/badge.svg?branch=master&service=github
+   :target: https://coveralls.io/github/tao12345666333/qyweixin?branch=master
+
 .. image:: https://img.shields.io/pypi/dm/qyweixin.svg
     :target: https://pypi.python.org/pypi/qyweixin
 
-`enterprise weixin <https://qy.weixin.qq.com>`_, interface.
+.. image:: https://img.shields.io/pypi/wheel/qyweixin.svg
+    :target: https://pypi.python.org/pypi/qyweixin
+
+.. image:: https://img.shields.io/pypi/status/qyweixin.svg
+    :target: https://pypi.python.org/pypi/qyweixin
+
+`Enterprise weixin <https://qy.weixin.qq.com>`_, interface.
 
 Usage
 --------
