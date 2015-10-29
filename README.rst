@@ -4,11 +4,11 @@ qyweixin
 .. image:: https://img.shields.io/pypi/v/qyweixin.svg
     :target: https://pypi.python.org/pypi/qyweixin
 
-.. image:: https://travis-ci.org/tao12345666333/qyweixin.svg?branch=master
-    :target: https://travis-ci.org/tao12345666333/qyweixin
+.. image:: https://travis-ci.org/MoeLove/qyweixin.svg?branch=master
+    :target: https://travis-ci.org/MoeLove/qyweixin
 
-.. image:: https://coveralls.io/repos/tao12345666333/qyweixin/badge.svg?branch=master&service=github
-   :target: https://coveralls.io/github/tao12345666333/qyweixin?branch=master
+.. image:: https://coveralls.io/repos/MoeLove/qyweixin/badge.svg?branch=master&service=github
+   :target: https://coveralls.io/github/MoeLove/qyweixin?branch=master
 
 .. image:: https://img.shields.io/pypi/dm/qyweixin.svg
     :target: https://pypi.python.org/pypi/qyweixin
