@@ -59,7 +59,7 @@ Features
 - push messages
 - uploads media
 - manage media
-- receive message
+- manage contacts
 - more qyweixin api
 
 
