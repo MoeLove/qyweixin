@@ -14,5 +14,8 @@ install:
     - coverage run test_qyweixin.py
     - coverage report
 
+script:
+    - python test_qyweixin.py
+
 after_success:
     coveralls
