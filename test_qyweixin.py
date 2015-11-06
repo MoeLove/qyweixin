@@ -1,20 +1,12 @@
 #!/usr/bin/env python
 # coding=utf-8
 
-try:
-    import json
-except ImportError:
-    try:
-        import simplejson as json
-    except ImportError:
-        raise
-
-import unittest
 import os
+import unittest
 
 import qyweixin
 
-TEST_TOKEN = 'F7BDI83twIdkvYoocoxB5DgXLiv69_H_OW_M758NQqxl3rL1uzSDJ6VrdEgwOr4WikApPVJgSqSEvwGyoi8bWw'
+TEST_TOKEN = 'ElZ6SK_mv_Sr8FUrnJzeCd8zImZ456GJbKN6YOKxLkcnwvsYD8lqaZo3Y3H1Tqx47ATQbGqy8jXEEsP3N9XWVg'
 
 
 class QyweixinTestCase(unittest.TestCase):
@@ -41,8 +33,8 @@ class QyweixinTestCase(unittest.TestCase):
         if TEST_TOKEN:
             os.system('echo "test upload file for qyweixin" > test_qyweixin.txt')
             media_id = qyweixin.upload(TEST_TOKEN,
-                                      'test_qyweixin.txt',
-                                      'test_qyweixin.txt', 'file')
+                                       'test_qyweixin.txt',
+                                       'test_qyweixin.txt', 'file')
 
             push_msg = qyweixin.WeixinPush()
             result = push_msg.push_file_msg(TEST_TOKEN, agentid=0, media_id=media_id)
@@ -51,6 +43,22 @@ class QyweixinTestCase(unittest.TestCase):
             assert result is True
 
             os.system('rm test_qyweixin.txt')
+
+    def test_upload_img_and_push_msg(self):
+        if TEST_TOKEN:
+            os.system('wget https://avatars0.githubusercontent.com/u/14851244 -O logo.png')
+            media_id = qyweixin.upload(TEST_TOKEN,
+                                       'logo.png',
+                                       'logo.png',
+                                       'image')
+
+            push_msg = qyweixin.WeixinPush()
+            result = push_msg.push_image_msg(TEST_TOKEN, agentid=0, media_id=media_id)
+
+            assert media_id is not False
+            assert result is True
+
+            os.system('rm logo.png')
 
 
 if __name__ == '__main__':
