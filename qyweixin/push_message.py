@@ -10,6 +10,9 @@ except ImportError:
 
 
 class WeixinPush(object):
+    """
+    You need get a instance for push message.
+    """
 
     def _target_format(self, target):
         if isinstance(target, list):

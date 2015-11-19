@@ -6,15 +6,10 @@ import unittest
 
 import qyweixin
 
-TEST_TOKEN = 'ElZ6SK_mv_Sr8FUrnJzeCd8zImZ456GJbKN6YOKxLkcnwvsYD8lqaZo3Y3H1Tqx47ATQbGqy8jXEEsP3N9XWVg'
+TEST_TOKEN = 'xDxcn2bfGhG44dAum1OjbHwkmHZJYH1aM9ORNAhA0peABXgMkuxBKZ6qDvQkTGG3Yh_qr-fPcFnOfUpoYz9ZEA'
 
 
 class QyweixinTestCase(unittest.TestCase):
-
-    def test_get_token(self):
-        token = qyweixin.get_token('wx72942dxxx4', '6o_2i')
-
-        assert token is False
 
     def test_push_text_msg_wrong_token(self):
         push_msg = qyweixin.WeixinPush()
@@ -59,6 +54,11 @@ class QyweixinTestCase(unittest.TestCase):
             assert result is True
 
             os.system('rm logo.png')
+
+    def test_get_token(self):
+        token = qyweixin.get_token('wx72942dxxx4', '6o_2i')
+
+        assert token is False
 
 
 if __name__ == '__main__':

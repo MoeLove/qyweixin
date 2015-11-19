@@ -48,7 +48,7 @@ class Upload(object):
         return content_type, body
 
     def upload(self, token, filename, filepath, filetype):
-        """"
+        """
         This function can upload files to weixin server and return 'media_id',
         which can push to user's message.
         """
@@ -68,5 +68,9 @@ class Upload(object):
 
 
 def upload(token, filename, filepath, filetype):
+    """
+    This function can upload files to weixin server and return 'media_id',
+    which can push to user's message.
+    """
     qyupload = Upload()
     return qyupload.upload(token, filename, filepath, filetype)

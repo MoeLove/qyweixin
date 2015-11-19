@@ -59,7 +59,6 @@ Features
 - push messages
 - uploads media
 - manage media
-- manage contacts
 - more qyweixin api
 
 
@@ -77,10 +76,3 @@ License
 =========
 
 Copyright (C) 2015 TaoBeier
-
-
-HISTORY
-=========
-
-* 2015.09.27 Start.
-* 2015.10.08 Add file upload.

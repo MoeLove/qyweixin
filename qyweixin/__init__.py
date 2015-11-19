@@ -12,7 +12,7 @@ Homepage:
 
 __title__ = 'qyweixin'
 __author__ = 'TaoBeier'
-__version__ = '0.1.3'
+__version__ = '0.2.0'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2015 TaoBeier'
 

@@ -29,5 +29,8 @@ class AccessToken(object):
 
 
 def get_token(corpid, corpsecret):
+    """
+    Please use your corpid and corpsecret for get token.
+    """
     qy = AccessToken()
     return qy.get_token(corpid, corpsecret)
