@@ -30,8 +30,10 @@ class WeixinPush(object):
             'agentid': agentid,
             'msgtype': msgtype,
             msgtype: content,
-            'safe': safe
         }
+
+        if msgtype != 'news':
+            message_body['safe'] = safe
 
         if token:
             push_message_api = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=%s' % token
@@ -105,3 +107,94 @@ class WeixinPush(object):
                                   msgtype='file', content=_file_content,
                                   touser=touser, toparty=toparty, totag=totag,
                                   safe=safe)
+
+    def push_news_msg(self, token, agentid=0, articles=None,
+                      touser='@all', toparty='', totag=''):
+        """The articles params format eg.
+            articles = [
+                {
+                    "title": "Title",
+                    "description": "Description",
+                    "url": "URL",
+                    "picurl": "PIC_URL"
+                },
+            ]
+        """
+
+        if not articles or len(articles) == 0:
+            raise Exception('the articles at least include one content')
+
+        # TODO: format verify
+        _news_content = {
+            'articles': articles
+        }
+
+        return self._push_message(token=token, agentid=agentid,
+                                  msgtype='news', content=_news_content,
+                                  touser=touser, toparty=toparty, totag=totag)
+
+    def push_one_news_msg(self, token, agentid=0, title='', description='',
+                          url='', picurl='', touser='@all', toparty='',
+                          totag=''):
+        _news_content = {
+            'articles': [
+                {
+                    'title': title,
+                    'description': description,
+                    'url': url,
+                    'picurl': picurl
+                }
+            ]
+        }
+
+        return self._push_message(token=token, agentid=agentid,
+                                  msgtype='news', content=_news_content,
+                                  touser=touser, toparty=toparty, totag=totag)
+
+    def push_mpnews_msg(self, token, agentid=0, articles=None,
+                        media_id='', touser='@all', toparty='', totag='',
+                        safe=0):
+
+        # TODO: format verify
+        if articles:
+            _mpnews_content = {
+                'articles': articles
+            }
+        elif media_id:
+            _mpnews_content = {
+                'media_id': media_id
+            }
+        else:
+            raise Exception('params error')
+
+        return self._push_message(token=token, agentid=agentid,
+                                  msgtype='mpnews', content=_mpnews_content,
+                                  touser=touser, toparty=toparty, totag=totag)
+
+    def push_one_mpnews_msg(self, token, agentid=0, title='', thumb_media_id='',
+                            author='', content_source_url='', content='',
+                            digest='', show_cover_pic='', media_id='',
+                            touser='@all', toparty='', totag='', safe=0):
+
+        if media_id:
+            _mpnews_content = {
+                'media_id': media_id
+            }
+        else:
+            _mpnews_content = {
+                'articles': [
+                    {
+                        'title': title,
+                        'thumb_media_id': thumb_media_id,
+                        'author': author,
+                        'content_source_url': content_source_url,
+                        'content': content,
+                        'digest': digest,
+                        'show_cover_pic': show_cover_pic,
+                    }
+                ]
+            }
+
+        return self._push_message(token=token, agentid=agentid,
+                                  msgtype='mpnews', content=_mpnews_content,
+                                  touser=touser, toparty=toparty, totag=totag)
