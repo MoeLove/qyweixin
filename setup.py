@@ -47,17 +47,17 @@ setup(
     package_dir={'qyweixin': 'qyweixin'},
     include_package_data=True,
     install_requires=requires,
-    license='GPL',
+    license='MIT',
     zip_safe=False,
     platforms='any',
-    classifiers=(
+    classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Natural Language :: English',
-        'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.7',
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules',
-    ),
+    ],
 )

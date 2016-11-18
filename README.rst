@@ -75,4 +75,4 @@ To install qyweixin, simply:
 License
 =========
 
-Copyright (C) 2015 TaoBeier
+Copyright (C) 2015-2016 TaoBeier
