@@ -12,8 +12,9 @@ except ImportError:
 class AccessToken(object):
 
     def get_token(self, corpid, corpsecret):
-        get_token_api = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=%s&corpsecret=%s' % (
-            corpid, corpsecret)
+        get_token_api = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken?\
+            corpid={corpid}&corpsecret={corpsecret}'.format(
+                corpid=corpid, corpsecret=corpsecret)
         res = urllib2.Request(get_token_api)
 
         try:
