@@ -36,8 +36,9 @@ class WeixinPush(object):
             message_body['safe'] = safe
 
         if token:
-            push_message_api = 'https://qyapi.weixin.qq.com/cgi-bin/message\
-                /send?access_token={token}'.format(token=token)
+            push_message_api = ('https://qyapi.weixin.qq.com/cgi-bin/message'
+                                '/send?access_token={token}').format(
+                                    token=token)
             res = urllib2.Request(push_message_api)
 
             with contextlib.closing(
