@@ -72,6 +72,12 @@ To install qyweixin, simply:
     $ pip install qyweixin
 
 
+Notice
+--------
+
+This package on v0.3.0 has one broken api. When the message fails to send, the details are returned.
+
+
 License
 =========
 
