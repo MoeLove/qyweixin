@@ -47,12 +47,17 @@ class WeixinPush(object):
 
                 resp = json.loads(r.read())
 
-                if resp.get('errmsg', None) == 'ok':
+                # 2017.06.15 update:
+                # error judge
+                if resp.get('errmsg', None) == 'ok' and \
+                        resp.get('errcode', None) == 0 and \
+                        resp.get('invaliduser', '') == '' and \
+                        resp.get('invalidparty', '') == '':
                     return True
                 else:
-                    return False
+                    return False, resp
         else:
-            return False
+            return False, {'errmsg': 'token is needed'}
 
     def push_text_msg(self, token, agentid=0, content='',
                       touser='@all', toparty='', totag='', safe=0):
