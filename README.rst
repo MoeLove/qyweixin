@@ -81,4 +81,4 @@ This package on v0.3.0 has one broken api. When the message fails to send, the d
 License
 =========
 
-Copyright (C) 2015-2017 TaoBeier
+Copyright (C) 2015-2018 TaoBeier
