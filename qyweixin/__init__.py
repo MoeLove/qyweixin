@@ -12,9 +12,9 @@ Homepage:
 
 __title__ = 'qyweixin'
 __author__ = 'TaoBeier'
-__version__ = '0.3.0'
+__version__ = '0.3.1'
 __license__ = 'MIT'
-__copyright__ = 'Copyright 2015-2016 TaoBeier'
+__copyright__ = 'Copyright 2015-2018 TaoBeier'
 
 
 import logging

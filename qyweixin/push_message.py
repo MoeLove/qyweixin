@@ -205,3 +205,17 @@ class WeixinPush(object):
         return self._push_message(token=token, agentid=agentid,
                                   msgtype='mpnews', content=_mpnews_content,
                                   touser=touser, toparty=toparty, totag=totag)
+
+    def push_textcard_msg(self, token, agentid=0, title='title',
+                          description='desc', url='', btntxt='',
+                          touser='@all', toparty='', totag=''):
+        _textcard_content = {
+            'title': title,
+            'description': description,
+            'url': url,
+            'btntxt': btntxt,
+        }
+
+        return self._push_message(token=token, agentid=agentid,
+                                  msgtype='textcard', content=_textcard_content,
+                                  touser=touser, toparty=toparty, totag=totag)
